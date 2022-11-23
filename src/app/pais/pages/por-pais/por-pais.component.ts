@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Pais } from '../../interfaces/pais.interface';
+import { PaisService } from '../../services/pais.service';
 
 @Component({
   selector: 'app-por-pais',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PorPaisComponent implements OnInit {
 
-  constructor() { }
+  constructor(private paisService: PaisService) { }
 
   ngOnInit(): void {
   }
 
+  get findCountries(): Pais[] {
+    return this.paisService.findCountry('Esp');
+  }
 }
