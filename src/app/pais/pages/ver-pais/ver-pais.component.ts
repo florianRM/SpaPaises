@@ -3,8 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ver-pais',
-  templateUrl: './ver-pais.component.html',
-  styleUrls: ['./ver-pais.component.css']
+  templateUrl: './ver-pais.component.html'
 })
 export class VerPaisComponent implements OnInit {
 

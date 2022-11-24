@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
 import { Pais } from '../interfaces/pais.interface';
+import { HttpClient } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class PaisService {
-  private url = 'https://restcountries.com/v3.1/';
-  private countries: Pais[] = [];
+  private url = 'https://restcountries.com/v3.1/'
+  private _countries: Pais[] = [];
 
   constructor(private http: HttpClient) { }
 
-  findCountry(countryName: string): Pais[] {
+  get countries(): Pais[] {
+    return [...this._countries]
+  }
+
+  findCountry(countryName: string): void {
     this.http.get<Pais[]>(`${this.url}name/${countryName}`)
-    .subscribe( resp => this.countries = resp);
-    return this.countries;
+    .subscribe( resp => this._countries = resp);
   }
 }

@@ -1,20 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { Pais } from '../../interfaces/pais.interface';
 import { PaisService } from '../../services/pais.service';
+import { Pais } from '../../interfaces/pais.interface';
 
 @Component({
   selector: 'app-por-pais',
-  templateUrl: './por-pais.component.html',
-  styleUrls: ['./por-pais.component.css']
+  templateUrl: './por-pais.component.html'
 })
 export class PorPaisComponent implements OnInit {
 
-  constructor(private paisService: PaisService) { }
+  country: Pais[] = [];
+
+  constructor(private paisService: PaisService) {
+    
+  }
 
   ngOnInit(): void {
   }
 
-  get findCountries(): Pais[] {
-    return this.paisService.findCountry('Esp');
+  get paises() : Pais[] {
+    return this.paisService.countries;
   }
+
+  findCountries(): void {
+    this.paisService.findCountry('Esp');
+  }
+
 }
