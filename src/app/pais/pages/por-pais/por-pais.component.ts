@@ -6,23 +6,21 @@ import { Pais } from '../../interfaces/pais.interface';
   selector: 'app-por-pais',
   templateUrl: './por-pais.component.html'
 })
-export class PorPaisComponent implements OnInit {
+export class PorPaisComponent {
 
-  country: Pais[] = [];
+  country: string = '';
 
   constructor(private paisService: PaisService) {
     
   }
 
-  ngOnInit(): void {
-  }
-
-  get paises() : Pais[] {
+  get countries(): Pais[] {
     return this.paisService.countries;
+
   }
 
-  findCountries(): void {
-    this.paisService.findCountry('Esp');
+  findCountries(name: string): void {
+    this.paisService.findCountry(name);
   }
 
 }

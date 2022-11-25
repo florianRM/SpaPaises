@@ -1,4 +1,12 @@
-<h3 (click)="findCountries()">Por pais</h3>
+<h3>Por pais</h3>
+<hr>
+<form (ngSubmit)="findCountries(country)">
+    <input 
+    type="text"
+    name="country"
+    [(ngModel)]="country"
+    >
+</form>
 <hr>
 <table class="table table-hover">
     <thead>
@@ -10,15 +18,14 @@
             <th></th>
         </tr>
     </thead>
-    <tbody *ngFor="let item of paises">
-        <tr> <!-- Esto es lo que tenemos que repetir por cada país que encuentre -->
-            <td> Número </td> <!-- Aquí obtendremos el número de resultado -->
+    <tbody>
+        <tr *ngFor="let country of countries; let i=index"> <!-- Esto es lo que tenemos que repetir por cada país que encuentre -->
+            <td> {{ i + 1 }} </td> <!-- Aquí obtendremos el número de resultado -->
             <td>
-                <img class="small-flag" > <!-- Aquí obtendremos la url de la bandera --> 
+                <img class="small-flag" [src]="country.flags.png" > <!-- Aquí obtendremos la url de la bandera --> 
             </td>
-            <td>  </td> <!-- La capital, el nombre del país y la población lo obtendremos de la api -->
-            <td></td>
-            <td>  </td>
+            <td> {{ country.capital }}, {{ country.name.common }} </td> <!-- La capital, el nombre del país y la población lo obtendremos de la api -->
+            <td> {{ country.population }} </td>
             <td>
                 <a >Ver...</a> <!-- Esto lo dejamos así de momento -->
             </td>
