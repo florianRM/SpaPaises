@@ -9,18 +9,30 @@ import { Pais } from '../../interfaces/pais.interface';
 export class PorPaisComponent {
 
   country: string = '';
+  countries: Pais[] = [];
+  errorMsg: string = '';
 
   constructor(private paisService: PaisService) {
-    
-  }
-
-  get countries(): Pais[] {
-    return this.paisService.countries;
-
   }
 
   findCountries(name: string): void {
-    this.paisService.findCountry(name);
+    this.paisService.findCountry(name)
+    // .subscribe( resp => {
+    //   this.countries = resp
+    // }, (error) => {
+
+    // });
+    .subscribe({
+
+      next: (resp) => {
+        this.errorMsg = '';
+        this.countries = resp
+      },
+      error: () => {
+        this.errorMsg = this.country;
+      }
+    }
+    )
   }
 
 }

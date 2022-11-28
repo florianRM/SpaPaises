@@ -4,9 +4,13 @@
     <input 
     type="text"
     name="country"
+    class="form-control"
     [(ngModel)]="country"
     >
 </form>
+<div class="alert alert-danger" *ngIf="errorMsg.length != 0">
+    No se encontró nada con el término {{ errorMsg }}
+</div>
 <hr>
 <table class="table table-hover">
     <thead>
@@ -27,7 +31,7 @@
             <td> {{ country.capital }}, {{ country.name.common }} </td> <!-- La capital, el nombre del país y la población lo obtendremos de la api -->
             <td> {{ country.population }} </td>
             <td>
-                <a >Ver...</a> <!-- Esto lo dejamos así de momento -->
+                <a [routerLink]="['/pais', country.cca2]">Ver...</a> <!-- Esto lo dejamos así de momento -->
             </td>
         </tr>
     </tbody>
