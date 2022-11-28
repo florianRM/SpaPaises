@@ -12,16 +12,10 @@ export class PorPaisComponent {
   countries: Pais[] = [];
   errorMsg: string = '';
 
-  constructor(private paisService: PaisService) {
-  }
+  constructor(private paisService: PaisService) { }
 
-  findCountries(name: string): void {
-    this.paisService.findCountry(name)
-    // .subscribe( resp => {
-    //   this.countries = resp
-    // }, (error) => {
-
-    // });
+  findCountries(): void {
+    this.paisService.findCountries(this.country)
     .subscribe({
 
       next: (resp) => {

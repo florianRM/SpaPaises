@@ -1,8 +1,6 @@
-<div class="alert alert-info">
+<div class="alert alert-info" *ngIf="error">
     Espere por favor...
 </div>
-
-
 
 <!-- Todo lo siguiente se mostrará cuando se haya cargado el páis-->
 
@@ -49,10 +47,9 @@
             <span class="badge bg-primary mr-1">{{ pais.translations['ita'].common }}</span>
             <span class="badge bg-primary mr-1">{{ pais.translations['bre'].common }}</span>
             <span class="badge bg-primary mr-1">{{ pais.translations['por'].common }}</span>
-            <!-- <span class="badge bg-primary mr-1">{{ pais.translations.nl }}</span>
-            <span class="badge bg-primary mr-1">{{ pais.translations.hr }}</span>
-            <span class="badge bg-primary mr-1">{{ pais.translations.fa }}</span> -->
-            
+            <span class="badge bg-primary mr-1">{{ pais.translations['nld'].common }}</span>
+            <span class="badge bg-primary mr-1">{{ pais.translations['hrv'].common }}</span>
+            <span class="badge bg-primary mr-1">{{ pais.translations['fin'].common }}</span>
             
         </div>
     </div>
