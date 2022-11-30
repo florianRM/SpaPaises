@@ -11,22 +11,26 @@ export class PorPaisComponent {
   country: string = '';
   countries: Pais[] = [];
   errorMsg: string = '';
+  error: boolean = false;
 
   constructor(private paisService: PaisService) { }
 
   findCountries(): void {
+    const errorMsg: string = this.country;
     this.paisService.findCountries(this.country)
     .subscribe({
 
       next: (resp) => {
-        this.errorMsg = '';
+        this.error = false;
         this.countries = resp
       },
       error: () => {
-        this.errorMsg = this.country;
+        this.error = true;
+        this.errorMsg = errorMsg;
+        this.countries = [];
       }
-    }
-    )
+    })
+    this.country = '';
   }
 
 }

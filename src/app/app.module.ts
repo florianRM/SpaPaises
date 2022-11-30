@@ -15,8 +15,7 @@ import { PaisModule } from './pais/pais.module';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    HttpClientModule,
-    PaisModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

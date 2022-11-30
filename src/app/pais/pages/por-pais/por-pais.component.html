@@ -8,11 +8,11 @@
     [(ngModel)]="country"
     >
 </form>
-<div class="alert alert-danger" *ngIf="errorMsg.length != 0">
+<div class="alert alert-danger" *ngIf="error">
     No se encontró nada con el término {{ errorMsg }}
 </div>
 <hr>
-<table class="table table-hover">
+<table class="table table-hover" *ngIf="countries.length != 0">
     <thead>
         <tr>
             <th> # </th>
@@ -29,7 +29,7 @@
                 <img class="small-flag" [src]="country.flags.png" > <!-- Aquí obtendremos la url de la bandera --> 
             </td>
             <td> {{ country.capital }}, {{ country.name.common }} </td> <!-- La capital, el nombre del país y la población lo obtendremos de la api -->
-            <td> {{ country.population }} </td>
+            <td> {{ country.population | number }} </td>
             <td>
                 <a [routerLink]="['/pais', country.cca2]">Ver...</a> <!-- Esto lo dejamos así de momento -->
             </td>
