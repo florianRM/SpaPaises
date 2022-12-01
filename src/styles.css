@@ -8,5 +8,11 @@
 }
 
 .activo {
-    color: red;
+    background-color: rgb(18, 150, 207);
+    color: white;
+}
+
+li {
+    text-align: center;
+    cursor: pointer;
 }
