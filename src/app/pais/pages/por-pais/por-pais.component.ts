@@ -8,29 +8,24 @@ import { Pais } from '../../interfaces/pais.interface';
 })
 export class PorPaisComponent {
 
-  country: string = '';
   countries: Pais[] = [];
   errorMsg: string = '';
-  error: boolean = false;
 
   constructor(private paisService: PaisService) { }
 
-  findCountries(): void {
-    const errorMsg: string = this.country;
-    this.paisService.findCountries(this.country)
+  findCountries(country: string): void {
+    this.paisService.findCountries(country)
     .subscribe({
 
       next: (resp) => {
-        this.error = false;
         this.countries = resp
+        this.errorMsg = '';
       },
       error: () => {
-        this.error = true;
-        this.errorMsg = errorMsg;
+        this.errorMsg = country;
         this.countries = [];
       }
     })
-    this.country = '';
   }
 
 }

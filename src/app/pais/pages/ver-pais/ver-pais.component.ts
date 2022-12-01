@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PaisService } from '../../services/pais.service';
 import { Pais } from '../../interfaces/pais.interface';
-import { find } from 'rxjs';
 
 @Component({
   selector: 'app-ver-pais',
@@ -10,7 +9,7 @@ import { find } from 'rxjs';
 })
 export class VerPaisComponent implements OnInit {
 
-  private _country: Pais[] = [];
+  pais!: Pais;
   id: string = '';
   error: boolean = false;
 
@@ -20,24 +19,15 @@ export class VerPaisComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.findCountry();
-  }
 
-  get pais(): Pais {
-    return this._country[0];
-  }
-
-  findCountry(): void {
     this.paisService.findCountry(this.id)
     .subscribe({
       
       next: (res) => {
         this.error = false;
-        this._country = res;
+        this.pais = res[0];
       },
-      error: () => {
-        this.error = true;
-      }
+      error: () => this.error = true
     })
   }
 }

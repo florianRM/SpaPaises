@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Pais } from '../interfaces/pais.interface';
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable, find } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +18,9 @@ export class PaisService {
 
   findCountry(countryId: string): Observable<Pais[]> {
     return this.http.get<Pais[]>(`${this.url}alpha/${countryId}`);
+  }
+
+  findCountryByCapital(capital: string): Observable<Pais[]> {
+    return this.http.get<Pais[]>(`${this.url}capital/${capital}`);
   }
 }

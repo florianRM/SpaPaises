@@ -2,7 +2,15 @@
     Sidebar
 </h3>
 <hr/>
-<div>Buscar país</div>
-<div>Por región</div>
-<div>Por capital</div>
+<ul class="list-group">
+    <li class="list-group-item">
+        <a [routerLink]="['/']" routerLinkActive="activo">Buscar país</a>
+    </li>
+    <li class="list-group-item">
+        <a [routerLink]="['/region']" routerLinkActive="activo">Por región</a>
+    </li>
+    <li class="list-group-item">
+        <a [routerLink]="['/capital']" routerLinkActive="activo">Por capital</a>
+    </li>
+</ul>
 

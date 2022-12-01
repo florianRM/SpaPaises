@@ -1,1 +1,6 @@
-<p>por-capital works!</p>
+<h3>Por capital</h3>
+<hr>
+<app-search (countryEvent)="findCountry($event)"></app-search>
+<hr>
+<app-error *ngIf="errorMsg.length" [errorMsg]="errorMsg"></app-error>
+<app-table [countries]="countries"></app-table>

@@ -4,7 +4,7 @@
 
 <!-- Todo lo siguiente se mostrará cuando se haya cargado el páis-->
 
-<div *ngIf="pais != null">
+<div *ngIf="pais">
     <div class="row">
         <div class="col-12">
             <h1>País: <small>{{ pais.name.common }}</small></h1>
@@ -22,7 +22,7 @@
             <h3>Información</h3>
             <ul class="list-group">
                 <li class="list-group-item">
-                    <strong>Población: {{ pais.population }}</strong> 
+                    <strong>Población: {{ pais.population | number }}</strong> 
                 </li>
                 <li class="list-group-item">
                     <strong>Código numérico: {{ pais.ccn3 }}</strong> 
